@@ -1,5 +1,6 @@
 #pragma once
-class Firerate
+#include "Capacity.h"
+class Firerate : public Capacity
 {
 public:
 	Firerate();
