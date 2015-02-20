@@ -8,6 +8,10 @@ Firerate::Firerate()
 	this->currentWaitingTime_ = this->firerate_;
 }
 
+void Firerate::decrease_value()
+{
+	this->currentWaitingTime_--;
+}
 
 Firerate::~Firerate()
 {

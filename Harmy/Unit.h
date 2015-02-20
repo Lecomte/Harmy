@@ -27,6 +27,11 @@ public:
 	float speed_get() { return this->capacites_.at(this->SPEED)->value_get(); }
 	int id_get() { return this->UNIQ_ID; }
 	int level_get();
+	void refresh();
+	void setPosition(int x, int y);
+	bool canShoot();
+	void takeDamage(float value);
+	bool isAlive();
 	~Unit();
 private:
 	std::vector<Capacity*> capacites_;

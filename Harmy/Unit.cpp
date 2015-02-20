@@ -22,6 +22,31 @@ int Unit::level_get()
 	return level;
 }
 
+void Unit::refresh()
+{
+	this->attackSpeed_get() - 1
+}
+
+void Unit::setPosition(int x, int y)
+{
+
+}
+
+bool Unit::canShoot()
+{
+
+}
+
+void Unit::takeDamage(float value)
+{
+
+}
+
+bool Unit::isAlive()
+{
+
+}
+
 Unit::~Unit()
 {
 
