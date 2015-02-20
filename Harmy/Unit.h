@@ -7,6 +7,7 @@
 #include "Health.h"
 #include "Regeneration.h"
 #include "Speed.h"
+#include "Point.h"
 #include <vector>
 
 class Unit

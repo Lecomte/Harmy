@@ -11,29 +11,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Armor.h" />
-    <ClInclude Include="..\AttackSpeed.h" />
-    <ClInclude Include="..\Capacity.h" />
-    <ClInclude Include="..\Damage.h" />
-    <ClInclude Include="..\Firerate.h" />
-    <ClInclude Include="..\Health.h" />
-    <ClInclude Include="..\Range.h" />
-    <ClInclude Include="..\Regeneration.h" />
-    <ClInclude Include="..\Speed.h" />
-    <ClInclude Include="..\Unit.h" />
+    <ClInclude Include="Armor.h" />
+    <ClInclude Include="AttackSpeed.h" />
+    <ClInclude Include="Capacity.h" />
+    <ClInclude Include="Damage.h" />
+    <ClInclude Include="Firerate.h" />
+    <ClInclude Include="Health.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Range.h" />
+    <ClInclude Include="Regeneration.h" />
+    <ClInclude Include="Speed.h" />
+    <ClInclude Include="Unit.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Armor.cpp" />
-    <ClCompile Include="..\AttackSpeed.cpp" />
-    <ClCompile Include="..\Capacity.cpp" />
-    <ClCompile Include="..\Damage.cpp" />
-    <ClCompile Include="..\Firerate.cpp" />
-    <ClCompile Include="..\Health.cpp" />
-    <ClCompile Include="..\main.cpp" />
-    <ClCompile Include="..\Range.cpp" />
-    <ClCompile Include="..\Regeneration.cpp" />
-    <ClCompile Include="..\Speed.cpp" />
-    <ClCompile Include="..\Unit.cpp" />
+    <ClCompile Include="Armor.cpp" />
+    <ClCompile Include="AttackSpeed.cpp" />
+    <ClCompile Include="Capacity.cpp" />
+    <ClCompile Include="Damage.cpp" />
+    <ClCompile Include="Firerate.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Range.cpp" />
+    <ClCompile Include="Regeneration.cpp" />
+    <ClCompile Include="Speed.cpp" />
+    <ClCompile Include="Unit.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3E179B9C-8EDB-4172-B8BD-865358C0D211}</ProjectGuid>
