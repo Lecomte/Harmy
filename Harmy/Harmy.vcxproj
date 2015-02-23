@@ -12,10 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
-    <ClInclude Include="AttackSpeed.h" />
+    <ClInclude Include="Army.h" />
     <ClInclude Include="Capacity.h" />
     <ClInclude Include="Damage.h" />
     <ClInclude Include="Firerate.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Range.h" />
@@ -25,10 +26,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="AttackSpeed.cpp" />
+    <ClCompile Include="Army.cpp" />
     <ClCompile Include="Capacity.cpp" />
     <ClCompile Include="Damage.cpp" />
     <ClCompile Include="Firerate.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.cpp" />
