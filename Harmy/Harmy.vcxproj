@@ -11,6 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Others\Action.h" />
+    <ClInclude Include="Others\MoveAction.h" />
+    <ClInclude Include="Others\AI.h" />
     <ClInclude Include="Capacities\Armor.h" />
     <ClInclude Include="GameMechanics\Army.h" />
     <ClInclude Include="Capacities\Capacity.h" />
@@ -23,8 +26,11 @@
     <ClInclude Include="Capacities\Regeneration.h" />
     <ClInclude Include="Capacities\Speed.h" />
     <ClInclude Include="GameMechanics\Unit.h" />
+    <ClInclude Include="Others\ShootAction.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Others\MoveAction.cpp" />
+    <ClCompile Include="Others\AI.cpp" />
     <ClCompile Include="Capacities\Armor.cpp" />
     <ClCompile Include="GameMechanics\Army.cpp" />
     <ClCompile Include="Capacities\Capacity.cpp" />
@@ -38,6 +44,7 @@
     <ClCompile Include="Capacities\Regeneration.cpp" />
     <ClCompile Include="Capacities\Speed.cpp" />
     <ClCompile Include="GameMechanics\Unit.cpp" />
+    <ClCompile Include="Others\ShootAction.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3E179B9C-8EDB-4172-B8BD-865358C0D211}</ProjectGuid>

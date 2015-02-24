@@ -19,36 +19,36 @@ std::shared_ptr<IAction> IA::operator()(Unit& unit, Army& a, Army& opposingArmy)
 
     ARGUNUSED(a);
 
-    if (unit.getIACode()[1] == 'D')
+    if (unit.getReload().getCurrentReload() > 0.0f)
     {
-        if (unit.getIACode()[0] == 'H')
-            target = &(opposingArmy.getFartherUnit(unit.getPosition()));
-        else
-            target = &(opposingArmy.getNearestUnit(unit.getPosition()));
-    }
-    else
-    {
-        unsigned int capId = unit.getIACode()[1] - '0';
-
-        if (capId < NUMBEROFCAPACITY)
+        if (unit.getIACode()[1] == 'D')
         {
             if (unit.getIACode()[0] == 'H')
-                target = &(opposingArmy.getHighestUnit(capId));
-
+                target = &(opposingArmy.getFartherUnit(unit.getPosition()));
             else
-                target = &(opposingArmy.getLowestUnit(capId));
+                target = &(opposingArmy.getNearestUnit(unit.getPosition()));
         }
-    }
-
-    if (target == nullptr)
-        action = new NothingAction(a.getId(), unit);
-
-    else
-    {
-        Point<> direction(target->getPosition() - unit.getPosition());
-
-        if (unit.getReload().getCurrentReload() == 0.0f)
+        else
         {
+            unsigned int capId = unit.getIACode()[1] - '0';
+
+            if (capId < NUMBEROFCAPACITY)
+            {
+                if (unit.getIACode()[0] == 'H')
+                    target = &(opposingArmy.getHighestUnit(capId));
+
+                else
+                    target = &(opposingArmy.getLowestUnit(capId));
+            }
+        }
+
+        if (target == nullptr)
+            action = new NothingAction(a.getId(), unit);
+
+        else
+        {
+            Point<> direction(target->getPosition() - unit.getPosition());
+
             if (direction.magnitude() < unit.getRange().getValue())
             {
                 //FIRE !!!
@@ -60,13 +60,28 @@ std::shared_ptr<IAction> IA::operator()(Unit& unit, Army& a, Army& opposingArmy)
                 action = new MoveAction(a.getId(), unit, direction);
             }
         }
+    }
+    else
+    {
+        if (opposingArmy.size() > 0)
+        {
+            const std::vector<Unit*> units(opposingArmy.getUnitsList());
+
+            Point<> centerOfMass(0.0f, 0.0f);
+
+            for (auto unit : units)
+                centerOfMass += unit->getPosition();
+
+            centerOfMass /= static_cast<float>(opposingArmy.size());
+
+            //RUN AWAY !!!
+            action = new MoveAction(a.getId(), unit, -(centerOfMass - unit.getPosition()));
+        }
         else
         {
-            //RUN AWAY !!!
-            action = new MoveAction(a.getId(), unit, -direction);
+            action = new NothingAction(a.getId(), unit);
         }
     }
-
     
     return std::shared_ptr<IAction>(action);
 }

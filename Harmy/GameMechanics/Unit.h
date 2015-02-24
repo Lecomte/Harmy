@@ -15,6 +15,7 @@
 class Unit
 {
 public:
+	Unit();
 	Unit(int UniqId, int levelCount);
 	Unit(int UniqId, int armorLevel, int firerateLevel, int DamageLevel, int rangeLevel, int healthLevel, int regenerationLevel, int speedLevel, std::string AiCode);
 	enum CapacityID : int {SPEED=0,HEALTH,ARMOR,REGENERATION,DAMAGE,RANGE,FIRERATE};

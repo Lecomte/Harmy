@@ -33,8 +33,19 @@ Army::Army(std::vector<Unit*> unitList)
 
 Unit& Army::unit_get(int uniqId)
 {
+	Unit* u = nullptr;
+	for (int i = 0; i < this->unitList_.size(); i++)
+	{
+		if (this->unitList_[i]->UNIQ_ID_get() == uniqId)
+			u = this->unitList_[i];
+	}
+	return *u;
+}
+
+Unit& Army::unitList_getAt(int index)
+{
 	//if (uniqId < this->size_get())
-	return *(this->unitList_[uniqId]);
+	return *(this->unitList_[index]);
 	//return nullptr;
 }
 

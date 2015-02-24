@@ -9,6 +9,7 @@ public:
 	Army(int unitCount, int levelPerUnit);
 	Army(std::vector<Unit*> unitList);
 	Unit& unit_get(int uniqId);
+	Unit& unitList_getAt(int index);
 	int size_get() { return this->unitList_.size(); }
 	Unit& getNearestUnit(Point& pos);
 	Unit& getFurtherUnit(Point& pos);

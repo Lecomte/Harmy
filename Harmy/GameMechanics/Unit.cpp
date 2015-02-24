@@ -1,5 +1,9 @@
 #include "Unit.h"
 
+Unit::Unit()
+{
+
+}
 
 Unit::Unit(int UniqId, int levelCount)
 {
