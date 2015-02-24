@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Actions\MoveAction.cpp" />
+    <ClCompile Include="src\Actions\NothingAction.cpp" />
+    <ClCompile Include="src\Actions\ShootAction.cpp" />
+    <ClCompile Include="src\Army.cpp" />
+    <ClCompile Include="src\Capacity\ArmorCapacity.cpp" />
+    <ClCompile Include="src\Capacity\Capacity.cpp" />
+    <ClCompile Include="src\Capacity\DamageCapacity.cpp" />
+    <ClCompile Include="src\Capacity\HealthCapacity.cpp" />
+    <ClCompile Include="src\Capacity\RangeCapacity.cpp" />
+    <ClCompile Include="src\Capacity\RegenCapacity.cpp" />
+    <ClCompile Include="src\Capacity\ReloadCapacity.cpp" />
+    <ClCompile Include="src\Capacity\SpeedCapacity.cpp" />
+    <ClCompile Include="src\Constants.cpp" />
+    <ClCompile Include="src\IA.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Unit.cpp" />
+    <ClCompile Include="src\unitTest.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Actions\IActions.h" />
+    <ClInclude Include="include\Actions\MoveAction.h" />
+    <ClInclude Include="include\Actions\NothingAction.h" />
+    <ClInclude Include="include\Actions\ShootAction.h" />
+    <ClInclude Include="include\Army.h" />
+    <ClInclude Include="include\Capacity\AllCapacity.h" />
+    <ClInclude Include="include\Capacity\ArmorCapacity.h" />
+    <ClInclude Include="include\Capacity\Capacity.h" />
+    <ClInclude Include="include\Capacity\DamageCapacity.h" />
+    <ClInclude Include="include\Capacity\HealthCapacity.h" />
+    <ClInclude Include="include\Capacity\RangeCapacity.h" />
+    <ClInclude Include="include\Capacity\RegenCapacity.h" />
+    <ClInclude Include="include\Capacity\ReloadCapacity.h" />
+    <ClInclude Include="include\Capacity\SpeedCapacity.h" />
+    <ClInclude Include="include\Constants.h" />
+    <ClInclude Include="include\FightOptions.h" />
+    <ClInclude Include="include\IA.h" />
+    <ClInclude Include="include\Point.h" />
+    <ClInclude Include="include\Unit.h" />
+    <ClInclude Include="include\unitTest.h" />
+    <ClInclude Include="include\Utils.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{04E78ABB-817E-4471-8B27-56193CD337D3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Army</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>bin\</OutDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

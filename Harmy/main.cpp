@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Army.h"
+#include "GameMechanics\Army.h"
 
 int main(int argc, char **argv)
 {

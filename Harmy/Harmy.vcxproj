@@ -11,33 +11,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Armor.h" />
-    <ClInclude Include="Army.h" />
-    <ClInclude Include="Capacity.h" />
-    <ClInclude Include="Damage.h" />
-    <ClInclude Include="Firerate.h" />
-    <ClInclude Include="GameLoop.h" />
-    <ClInclude Include="Health.h" />
-    <ClInclude Include="Point.h" />
-    <ClInclude Include="Range.h" />
-    <ClInclude Include="Regeneration.h" />
-    <ClInclude Include="Speed.h" />
-    <ClInclude Include="Unit.h" />
+    <ClInclude Include="Capacities\Armor.h" />
+    <ClInclude Include="GameMechanics\Army.h" />
+    <ClInclude Include="Capacities\Capacity.h" />
+    <ClInclude Include="Capacities\Damage.h" />
+    <ClInclude Include="Capacities\Firerate.h" />
+    <ClInclude Include="GameMechanics\GameLoop.h" />
+    <ClInclude Include="Capacities\Health.h" />
+    <ClInclude Include="Others\Point.h" />
+    <ClInclude Include="Capacities\Range.h" />
+    <ClInclude Include="Capacities\Regeneration.h" />
+    <ClInclude Include="Capacities\Speed.h" />
+    <ClInclude Include="GameMechanics\Unit.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="Army.cpp" />
-    <ClCompile Include="Capacity.cpp" />
-    <ClCompile Include="Damage.cpp" />
-    <ClCompile Include="Firerate.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
-    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="Capacities\Armor.cpp" />
+    <ClCompile Include="GameMechanics\Army.cpp" />
+    <ClCompile Include="Capacities\Capacity.cpp" />
+    <ClCompile Include="Capacities\Damage.cpp" />
+    <ClCompile Include="Capacities\Firerate.cpp" />
+    <ClCompile Include="GameMechanics\GameLoop.cpp" />
+    <ClCompile Include="Capacities\Health.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Point.cpp" />
-    <ClCompile Include="Range.cpp" />
-    <ClCompile Include="Regeneration.cpp" />
-    <ClCompile Include="Speed.cpp" />
-    <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="Others\Point.cpp" />
+    <ClCompile Include="Capacities\Range.cpp" />
+    <ClCompile Include="Capacities\Regeneration.cpp" />
+    <ClCompile Include="Capacities\Speed.cpp" />
+    <ClCompile Include="GameMechanics\Unit.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3E179B9C-8EDB-4172-B8BD-865358C0D211}</ProjectGuid>

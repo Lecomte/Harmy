@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Capacity">
+      <UniqueIdentifier>{afc4ac7c-5ba5-4992-806a-0ca160b77d94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Capacity">
+      <UniqueIdentifier>{cd3b7a27-f463-4a10-84a2-b34cdd3ce394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Actions">
+      <UniqueIdentifier>{82db3e62-905a-4ce7-a900-4396a39eb4a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Actions">
+      <UniqueIdentifier>{2d00f939-7d0c-4c5e-a9fa-28091c3bbca8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Army.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IA.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Constants.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\unitTest.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Unit.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actions\MoveAction.cpp">
+      <Filter>Fichiers sources\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actions\ShootAction.cpp">
+      <Filter>Fichiers sources\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actions\NothingAction.cpp">
+      <Filter>Fichiers sources\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\ArmorCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\Capacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\DamageCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\HealthCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\RangeCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\RegenCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\ReloadCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capacity\SpeedCapacity.cpp">
+      <Filter>Fichiers sources\Capacity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Capacity\Capacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IA.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Unit.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Army.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Point.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\AllCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Constants.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\unitTest.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Actions\IActions.h">
+      <Filter>Fichiers d%27en-tête\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Actions\MoveAction.h">
+      <Filter>Fichiers d%27en-tête\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Actions\ShootAction.h">
+      <Filter>Fichiers d%27en-tête\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Actions\NothingAction.h">
+      <Filter>Fichiers d%27en-tête\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\ArmorCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\DamageCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\HealthCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\RangeCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\RegenCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\ReloadCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Capacity\SpeedCapacity.h">
+      <Filter>Fichiers d%27en-tête\Capacity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FightOptions.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
