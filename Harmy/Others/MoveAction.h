@@ -6,10 +6,11 @@
 class MoveAction : public Action
 {
 public:
-	MoveAction(Unit unit, Point target);
+	MoveAction(Unit& unit, Point target, std::string armyCode);
 	void execute();
 	~MoveAction();
 private:
-	Unit unit_;
+	Unit& unit_;
 	Point positionTarget_;
+	std::string armyCode_;
 };

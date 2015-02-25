@@ -12,9 +12,17 @@ Point::Point(int x, int y)
 	this->y_ = y;
 }
 
-int Point::Distance(Point otherPoint)
+Point::Point(float x, float y)
 {
-	return std::abs(this->x_get() - otherPoint.x_get()) + std::abs(this->y_get() - otherPoint.y_get());
+	this->x_ = x;
+	this->y_ = y;
+}
+
+float Point::Distance(Point otherPoint)
+{
+	Point vecteur = Point(otherPoint.x_get() - this->x_get(), otherPoint.y_get() - this->y_get());
+	return std::sqrt(vecteur.magnitude());
+	//return std::abs(this->x_get() - otherPoint.x_get()) + std::abs(this->y_get() - otherPoint.y_get());
 }
 
 float Point::magnitude()
@@ -24,8 +32,10 @@ float Point::magnitude()
 
 Point Point::normalize()
 {
-
-	return Point(this->x_ / this->magnitude(), this->y_ / this->magnitude());
+	float distance = std::sqrt(this->magnitude());
+	if (distance == 0.0f)
+		return Point(0, 0);
+	return Point(std::roundf((this->x_ / distance) * 100.0f) / 100.0f, std::roundf((this->y_ / distance) * 100.0f) / 100.0f);
 }
 
 Point Point::barycentre(std::vector<Point> listPoint)

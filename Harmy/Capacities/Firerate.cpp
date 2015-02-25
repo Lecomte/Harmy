@@ -10,7 +10,8 @@ Firerate::Firerate()
 
 void Firerate::decrease_value()
 {
-	this->currentWaitingTime_--;
+	if (currentWaitingTime_ > 0)
+		this->currentWaitingTime_--;
 }
 
 Firerate::~Firerate()

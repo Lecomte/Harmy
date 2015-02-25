@@ -10,7 +10,9 @@ class AI
 {
 public:
 	AI();
-	std::shared_ptr<Action> operator()(Unit unit, Army myArmy, Army otherArmy);
+	std::shared_ptr<Action> operator()(Unit& unit, Army& myArmy, Army& otherArmy);
 	~AI();
+private:
+	Point getDeplacementForTarget(Unit& myUnit, Point targetPos);
 };
 

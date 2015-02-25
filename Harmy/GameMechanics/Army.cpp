@@ -2,32 +2,78 @@
 
 Army::Army()
 {
-	currentID = 0;
-	this->unitList_ = std::vector<Unit*>();
-	for (int i = 0; i < 10; i++)
+	//currentID = 0;
+	//this->unitList_ = std::vector<Unit*>();
+	/*for (int i = 0; i < 10; i++)
 	{
-		this->unitList_.push_back(new Unit(currentID, 10));
+		this->unitList_.push_back(new Unit(currentID, 10,Point(0,0)));
 		currentID++;
-	}
+	}*/
 }
 
-Army::Army(int unitCount, int levelPerUnit)
+Army::Army(std::string armyCode,int unitCount, int levelPerUnit)
 {
 	currentID = 0;
+	this->armyCode_ = armyCode;
+	Point currentSpawn;
 	this->unitList_ = std::vector<Unit*>();
 	for (int i = 0; i < unitCount; i++)
 	{
-		this->unitList_.push_back(new Unit(currentID, levelPerUnit));
+		currentSpawn = Point(0,0);
+		currentSpawn.x_set(currentSpawn.x_get() + (((std::rand() % 2) + 1) * std::rand() % this->rangeSpwan));
+		currentSpawn.y_set(currentSpawn.y_get() + (((std::rand() % 2) + 1) * std::rand() % this->rangeSpwan));
+		this->unitList_.push_back(new Unit(currentID, levelPerUnit,currentSpawn));
 		currentID++;
 	}
 }
 
-Army::Army(std::vector<Unit*> unitList)
+Army::Army(std::string armyCode, std::vector<Unit*> unitList)
 {
+	this->armyCode_ = armyCode;
 	this->unitList_ = std::vector<Unit*>();
 	for (int i = 0; i < unitList.size(); i++)
 	{
-		this->unitList_.push_back(new Unit(((Unit&)unitList[i])));
+		this->unitList_.push_back(new Unit((*unitList[i])));
+	}
+}
+
+Army::Army(Army& army)
+{
+	this->armyCode_ = army.armyCode_;
+	for (int i = 0; i < army.unitList_.size(); i++)
+	{
+		this->unitList_.push_back(new Unit(*army.unitList_[i]));
+	}
+	this->currentID = army.currentID;
+}
+
+Army& Army::operator=(const Army& army)
+{
+	if (this != &army)
+	{
+		this->armyCode_ = army.armyCode_;
+		for (int i = 0; i < this->unitList_.size(); i++)
+		{
+			delete this->unitList_[i];
+		}
+		this->unitList_.clear();
+		for (int i = 0; i < army.unitList_.size(); i++)
+		{
+			this->unitList_.push_back(new Unit(*army.unitList_[i]));
+		}
+		this->currentID = army.currentID;
+	}
+	return *this;
+}
+
+void Army::baseSpawn_set(Point value)
+{
+	for (int i = 0; i < this->unitList_.size(); i++)
+	{
+		Point currentSpawn = value;
+		currentSpawn.x_set(currentSpawn.x_get() + (((std::rand() % 2) + 1) * std::rand() % this->rangeSpwan));
+		currentSpawn.y_set(currentSpawn.y_get() + (((std::rand() % 2) + 1) * std::rand() % this->rangeSpwan));
+		this->unitList_[i]->setPosition(currentSpawn.x_get(), currentSpawn.y_get());
 	}
 }
 
@@ -51,66 +97,66 @@ Unit& Army::unitList_getAt(int index)
 
 Unit& Army::getNearestUnit(Point& pos)
 {
-	Unit& nearestUnit = ((Unit&)this->unitList_[0]);
-	int currentDist = pos.Distance(nearestUnit.position_get());
+	Unit* nearestUnit = &(unitList_getAt(0));
+	int currentDist = pos.Distance(nearestUnit->position_get());
 	for (int i = 1; i < this->size_get(); i++)
 	{
-		int dist = pos.Distance(this->unitList_[i]->position_get());
+		int dist = pos.Distance(unitList_getAt(i).position_get());
 		if (dist < currentDist)
 		{
-			nearestUnit = ((Unit&)this->unitList_[i]);
+			nearestUnit = &(unitList_getAt(i));
 			currentDist = dist;
 		}
 	}
-	return nearestUnit;
+	return *nearestUnit;
 }
 
 Unit& Army::getFurtherUnit(Point& pos)
 {
-	Unit& furtherUnit = ((Unit&)this->unitList_[0]);
-	int currentDist = pos.Distance(furtherUnit.position_get());
+	Unit* furtherUnit = &(unitList_getAt(0));
+	int currentDist = pos.Distance(furtherUnit->position_get());
 	for (int i = 1; i < this->size_get(); i++)
 	{
-		int dist = pos.Distance(this->unitList_[i]->position_get());
+		int dist = pos.Distance(unitList_getAt(i).position_get());
 		if (dist > currentDist)
 		{
-			furtherUnit = ((Unit&)this->unitList_[i]);
+			furtherUnit = &(unitList_getAt(i));
 			currentDist = dist;
 		}
 	}
-	return furtherUnit;
+	return *furtherUnit;
 }
 
 Unit& Army::getLowestUnit(int capacityId)
 {
-	Unit& lowestUnit = ((Unit&)this->unitList_[0]);
-	float currentValue = lowestUnit.capacity_get(capacityId)->value_get();
+	Unit* lowestUnit = &(unitList_getAt(0));
+	float currentValue = lowestUnit->capacity_get(capacityId)->value_get();
 	for (int i = 1; i < this->size_get(); i++)
 	{
-		float value = this->unitList_[i]->capacity_get(capacityId)->value_get();
+		float value = unitList_getAt(i).capacity_get(capacityId)->value_get();
 		if (value < currentValue)
 		{
-			lowestUnit = ((Unit&)this->unitList_[i]);
+			lowestUnit = &(unitList_getAt(i));
 			currentValue = value;
 		}
 	}
-	return lowestUnit;
+	return *lowestUnit;
 }
 
 Unit& Army::getHiggestUnit(int capacityId)
 {
-	Unit& higgestUnit = ((Unit&)this->unitList_[0]);
-	float currentValue = higgestUnit.capacity_get(capacityId)->value_get();
+	Unit* higgestUnit = &(unitList_getAt(0));
+	float currentValue = higgestUnit->capacity_get(capacityId)->value_get();
 	for (int i = 1; i < this->size_get(); i++)
 	{
-		float value = this->unitList_[i]->capacity_get(capacityId)->value_get();
+		float value = unitList_getAt(i).capacity_get(capacityId)->value_get();
 		if (value > currentValue)
 		{
-			higgestUnit = ((Unit&)this->unitList_[i]);
+			higgestUnit = &(unitList_getAt(i));
 			currentValue = value;
 		}
 	}
-	return higgestUnit;
+	return *higgestUnit;
 }
 
 void Army::purge()
@@ -119,8 +165,8 @@ void Army::purge()
 	std::vector<int> removedList = std::vector<int>();
 	for (int i = 0; i < this->size_get(); i++)
 	{
-		Unit* currentUnit = this->unitList_[i];
-		if (!currentUnit->isAlive())
+		Unit& currentUnit = this->unitList_getAt(i);
+		if (!currentUnit.isAlive())
 			removedList.push_back(number);
 		else
 			number++;
@@ -133,4 +179,9 @@ void Army::purge()
 
 Army::~Army()
 {
+	for (int i = 0; i < this->unitList_.size(); i++)
+	{
+		delete this->unitList_[i];
+	}
+	this->unitList_.clear();
 }

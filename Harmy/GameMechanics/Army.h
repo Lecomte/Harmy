@@ -6,11 +6,15 @@ class Army
 {
 public:
 	Army();
-	Army(int unitCount, int levelPerUnit);
-	Army(std::vector<Unit*> unitList);
+	Army(std::string armyCode,int unitCount, int levelPerUnit);
+	Army(std::string armyCode,std::vector<Unit*> unitList);
+	Army(Army& army);
+	Army& Army::operator=(const Army& army);
 	Unit& unit_get(int uniqId);
 	Unit& unitList_getAt(int index);
 	int size_get() { return this->unitList_.size(); }
+	void baseSpawn_set(Point value);
+	std::string armyCode_get() { return this->armyCode_; }
 	Unit& getNearestUnit(Point& pos);
 	Unit& getFurtherUnit(Point& pos);
 	Unit& getLowestUnit(int capacityId);
@@ -20,5 +24,7 @@ public:
 private:
 	std::vector<Unit*> unitList_;
 	int currentID;
+	std::string armyCode_;
+	int rangeSpwan = 20;
 };
 
