@@ -28,6 +28,7 @@
     <ClInclude Include="GameMechanics\Unit.h" />
     <ClInclude Include="Others\ShootAction.h" />
     <ClInclude Include="WarLoop.h" />
+    <ClInclude Include="WarSlot.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Others\MoveAction.cpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="GameMechanics\Unit.cpp" />
     <ClCompile Include="Others\ShootAction.cpp" />
     <ClCompile Include="WarLoop.cpp" />
+    <ClCompile Include="WarSlot.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3E179B9C-8EDB-4172-B8BD-865358C0D211}</ProjectGuid>

@@ -21,9 +21,15 @@ WarLoop::WarLoop()
 	std::cin >> y;
 	for (int j = 0; j < n; j++)
 	{
-		this->armyList.push_back(Army(std::string("Army ") + std::to_string(j), x, y));
-		this->armyScore.push_back(0);
+		this->slotList_.push_back(WarSlot(Army(std::string("Army ") + std::to_string(j), x, y)));
 	}
+
+	if (t >(n - 1)*x)
+	{
+		t = (n - 1)*x;
+		std::cout << "Redefinition du score minimal a : " << t << std::endl;
+	}
+
 	this->battleNumber_ = i;
 	this->minimalScore_ = t;
 	this->unitNumber_ = x;
@@ -34,26 +40,33 @@ void WarLoop::clashOfArmy()
 {
 	for (int i = 0; i < this->battleNumber_; i++)
 	{
-		for (int j = 0; j < this->armyList.size(); j++)
+		for (int j = 0; j < this->slotList_.size(); j++)
 		{
-			for (int k = j+1; k < this->armyList.size(); k++)
+			for (int k = j + 1; k < this->slotList_.size(); k++)
 			{
-				std::cout << "Fight " << this->armyList[j].armyCode_get() << " against " << this->armyList[k].armyCode_get() << " begin !" << std::endl;
-				GameLoop gl = GameLoop(this->armyList[j], this->armyList[k]);
+				std::cout << "Fight " << this->slotList_[j].army_get().armyCode_get() << " against " << this->slotList_[k].army_get().armyCode_get() << " begin !" << std::endl;
+				GameLoop gl = GameLoop(this->slotList_[j].army_get(), this->slotList_[k].army_get());
 				bool continu = true;
 				while (continu)
 				{
 					continu = gl.runRound();
 				}
-				this->armyScore[j] += gl.getArmyAPoint();
-				this->armyScore[k] += gl.getArmyBPoint();
+				this->slotList_[j].score_increase(gl.getArmyAPoint());
+				this->slotList_[k].score_increase(gl.getArmyBPoint());
 			}
 		}
+		std::sort(this->slotList_.begin(), this->slotList_.end());
+		if (this->slotList_[0].score_get() > this->minimalScore_)
+			break;
 	}
-	for (int l = 0; l < this->armyList.size(); l++)
+	for (int l = 0; l < this->slotList_.size(); l++)
 	{
-		std::cout << this->armyList[l].armyCode_get() << " a " << this->armyScore[l] << " points." << std::endl;
+		std::cout << this->slotList_[l].army_get().armyCode_get() << " a " << this->slotList_[l].score_get() << " points." << std::endl;
 	}
+
+	//this->slotList_[0].army_get().unitList_getAt(0).mutate();
+
+	this->slotList_[0].army_get().unitList_getAt(0) * this->slotList_[0].army_get().unitList_getAt(1);
 }
 
 WarLoop::~WarLoop()

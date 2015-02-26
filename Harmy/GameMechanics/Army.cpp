@@ -177,6 +177,44 @@ void Army::purge()
 	}
 }
 
+Army Army::mutate()
+{
+	Army cpyArmy = Army(*this);
+	int armyLength = cpyArmy.unitList_.size();
+	int mutationType = std::rand() % 2;
+	if (mutationType == 0)
+	{
+		for (int i = 0; i < cpyArmy.unitList_.size(); i++)
+		{
+			cpyArmy.unitList_[i] = new Unit(i, cpyArmy.unitList_[i]->level_get(), cpyArmy.unitList_[i]->position_get());
+		}
+	}
+	else{
+		int startEnsemble =0;
+		int endEnsemble =0;
+		while (startEnsemble == endEnsemble)
+		{
+			startEnsemble = std::rand() % armyLength;
+			endEnsemble = std::rand() % armyLength;
+		}
+		if (endEnsemble < startEnsemble){
+			int tmp = startEnsemble;
+			startEnsemble = endEnsemble;
+			endEnsemble = tmp;
+		}
+		for (int i = startEnsemble; i < endEnsemble; i++)
+		{
+			cpyArmy.unitList_[i] = &(cpyArmy.unitList_[i]->mutate());
+		}
+	}
+	return cpyArmy;
+}
+
+Army& Army::operator*(const Army& army)
+{
+
+}
+
 Army::~Army()
 {
 	for (int i = 0; i < this->unitList_.size(); i++)

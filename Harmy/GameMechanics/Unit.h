@@ -18,10 +18,10 @@ public:
 	Unit();
 	Unit(int UniqId, int levelCount, Point position);
 	Unit(int UniqId, int armorLevel, int firerateLevel, int DamageLevel, int rangeLevel, int healthLevel, int regenerationLevel, int speedLevel, std::string AiCode, Point position);
-	Unit(Unit& unit);
+	Unit(const Unit& unit);
 	Unit& operator=(const Unit& unit);
 	enum CapacityID : int {SPEED=0,HEALTH,ARMOR,REGENERATION,DAMAGE,RANGE,FIRERATE};
-	Capacity* capacity_get(int capacityID) { return this->capacities_.at(capacityID); }
+	Capacity* capacity_get(int capacityID) const { return this->capacities_.at(capacityID); }
 	void capacity_upgrade(int capacityID) { this->capacities_.at(capacityID)->level_upgrade(); }
 	void capacity_downgrade(int capacityID) { this->capacities_.at(capacityID)->level_downgrade(); }
 	Armor& armor_get() { return *((Armor*)this->capacities_.at(this->ARMOR)); }
@@ -34,20 +34,22 @@ public:
 	Regeneration& regeneration_get() { return *((Regeneration*)this->capacities_.at(this->REGENERATION)); }
 	Speed& speed_get() { return *((Speed*)this->capacities_.at(this->SPEED)); }
 	Point position_get(){ return this->position; }
-	std::string AICode_get() { return this->AICode_; }
+	std::string AICode_get() const { return this->AICode_; }
 	int id_get() { return this->UNIQ_ID; }
 	int UNIQ_ID_get();
-	int level_get();
+	int level_get() const;
 	void refresh();
 	void setPosition(int x, int y);
 	bool canShoot();
 	void takeDamage(float value);
 	bool isAlive();
+	Unit mutate() const;
+	Unit& operator*(const Unit& unit) const;
+	void instanciateCapacities();
 	//Debug
 	void print();
 	~Unit();
 private:
-	void instanciateCapacities();
 	Point position;
 	std::vector<Capacity*> capacities_;
 	std::string AICode_;

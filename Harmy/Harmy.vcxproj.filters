@@ -66,6 +66,9 @@
     <ClInclude Include="WarLoop.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="WarSlot.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +120,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="WarLoop.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="WarSlot.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

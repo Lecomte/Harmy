@@ -9,7 +9,7 @@ public:
 	Army(std::string armyCode,int unitCount, int levelPerUnit);
 	Army(std::string armyCode,std::vector<Unit*> unitList);
 	Army(Army& army);
-	Army& Army::operator=(const Army& army);
+	Army& operator=(const Army& army);
 	Unit& unit_get(int uniqId);
 	Unit& unitList_getAt(int index);
 	int size_get() { return this->unitList_.size(); }
@@ -20,6 +20,8 @@ public:
 	Unit& getLowestUnit(int capacityId);
 	Unit& getHiggestUnit(int capacityId);
 	void purge();
+	Army mutate();
+	Army& operator*(const Army& army);
 	~Army();
 private:
 	std::vector<Unit*> unitList_;

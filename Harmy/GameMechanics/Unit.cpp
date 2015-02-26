@@ -2,7 +2,6 @@
 
 Unit::Unit()
 {
-
 }
 
 Unit::Unit(int UniqId, int levelCount, Point position)
@@ -29,7 +28,7 @@ Unit::Unit(int UniqId, int levelCount, Point position)
 	//IA aléatoire
 }
 
-Unit::Unit(Unit& unit)
+Unit::Unit(const Unit& unit)
 {
 	instanciateCapacities();
 	this->UNIQ_ID = unit.UNIQ_ID;
@@ -97,7 +96,7 @@ int Unit::UNIQ_ID_get()
 	return this->UNIQ_ID;
 }
 
-int Unit::level_get()
+int Unit::level_get() const
 {
 	int level = 0;
 	for (std::vector<Capacity*>::size_type i = 0; i < this->capacities_.size(); i++)
@@ -144,19 +143,93 @@ bool Unit::isAlive()
 	return false;
 }
 
+Unit Unit::mutate() const
+{
+	Unit alienUnit = Unit(*this);
+	//alienUnit.print();
+	int decreaseCapacityID;
+	int increaseCapacityID;
+	int maxLevelDecrease = 0;
+	while (maxLevelDecrease == 0)
+	{
+		decreaseCapacityID = std::rand() % capacities_.size();
+		increaseCapacityID = std::rand() % capacities_.size();
+		maxLevelDecrease = capacities_[decreaseCapacityID]->level_get();
+	}
+	int numberLevelDecrease = std::rand() % maxLevelDecrease;
+	for (int i = 0; i < numberLevelDecrease;i++)
+	{
+		alienUnit.capacities_[decreaseCapacityID]->level_downgrade();
+		alienUnit.capacities_[increaseCapacityID]->level_upgrade();
+	}
+	//alienUnit.print();
+	return alienUnit;
+}
+
+Unit& Unit::operator*(const Unit& unit) const
+{
+	/*std::cout << "Papa Unit " << std::endl;
+	this->print();
+
+	std::cout << "Maman Unit " << std::endl;
+	unit.print();*/
+
+	Unit predatorUnit;
+	predatorUnit.instanciateCapacities();
+	int predatorLevel = 0;
+	int unitLevel = unit.level_get();
+	int myLevel = this->level_get();
+	if (unitLevel == myLevel)
+		predatorLevel = unitLevel;
+	else
+	{
+		int minLevel;
+		int diffLevel;
+		if (unitLevel < myLevel)
+		{
+			minLevel = unitLevel;
+			diffLevel = myLevel - unitLevel;
+		}
+		else{
+			minLevel = myLevel;
+			diffLevel = unitLevel - myLevel;
+		}
+		predatorLevel = (std::rand() % diffLevel) + minLevel;
+	}
+	while (predatorLevel > 0)
+	{
+		int capacityID = std::rand() % this->capacities_.size();
+		if (this->capacities_[capacityID]->level_get() > predatorUnit.capacities_[capacityID]->level_get() || unit.capacities_[capacityID]->level_get() > predatorUnit.capacities_[capacityID]->level_get())
+		{
+			predatorUnit.capacities_[capacityID]->level_upgrade();
+			predatorLevel--;
+		}
+	}
+	int iaTaken = std::rand() % 2;
+	if (iaTaken == 0)
+		predatorUnit.AICode_ = this->AICode_;
+	else
+		predatorUnit.AICode_ = unit.AICode_;
+
+	//std::cout << "Bebe Unit " << std::endl;
+	//predatorUnit.print();
+
+	return predatorUnit;
+}
+
 //debug
 void Unit::print()
 {
 	std::cout << "Uniq Id : " << this->UNIQ_ID << std::endl;
-	//std::cout << "armor : " << this->armor_get().value_get() << std::endl;
-	//std::cout << "health : " << this->health_get().value_get() << std::endl;
-	//std::cout << "health level : " << this->health_get().level_get() << std::endl;
-	//std::cout << "speed : " << this->speed_get().value_get() << std::endl;
-	//std::cout << "regeneration : " << this->regeneration_get().value_get() << std::endl;
-	//std::cout << "damage : " << this->damage_get().value_get() << std::endl;
+	std::cout << "armor : " << this->armor_get().value_get() << std::endl;
+	std::cout << "health : " << this->health_get().value_get() << std::endl;
+	std::cout << "health level : " << this->health_get().level_get() << std::endl;
+	std::cout << "speed : " << this->speed_get().value_get() << std::endl;
+	std::cout << "regeneration : " << this->regeneration_get().value_get() << std::endl;
+	std::cout << "damage : " << this->damage_get().value_get() << std::endl;
 	std::cout << "range : " << this->range_get().value_get() << std::endl;
 	std::cout << "firerate : " << this->firerate_get().value_get() << std::endl;
-	//std::cout << "firerate level : " << this->firerate_get().level_get() << std::endl;
+	std::cout << "firerate level : " << this->firerate_get().level_get() << std::endl;
 	std::cout << "Position : " << this->position_get().x_get() << " : " << this->position_get().y_get() << std::endl;
 	std::cout << "IACode : " << this->AICode_ << std::endl;
 	std::cout << std::endl;

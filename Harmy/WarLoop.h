@@ -1,7 +1,10 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "GameMechanics\GameLoop.h"
+#include "WarSlot.h"
+
 class WarLoop
 {
 public:
@@ -13,7 +16,6 @@ private:
 	int minimalScore_;
 	int unitNumber_;
 	int levelGlobal_;
-	std::vector<Army> armyList;
-	std::vector<int> armyScore;
+	std::vector<WarSlot> slotList_;
 };
 
