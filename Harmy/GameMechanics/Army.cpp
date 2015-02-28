@@ -248,9 +248,9 @@ Army& Army::operator*(const Army& army)
 	return newArmy;
 }
 
-void Army::save() {
+void Army::save(int size, int level) {
 	char fileName[50];
-	sprintf_s(fileName, 50, "army_%d_%d.save", this->size_get(), this->level_get());
+	sprintf_s(fileName, 50, "army_%d_%d.save", size, level);
 	std::ofstream file(fileName, std::ios::out | std::ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
 	if (file)
 	{
@@ -260,16 +260,6 @@ void Army::save() {
 		}
 		file.close();
 	}
-}
-
-int Army::level_get()
-{
-	int level = 0;
-	for each (Unit* unit in unitList_)
-	{
-		level += unit->level_get();
-	}
-	return level;
 }
 
 Army::~Army()

@@ -23,13 +23,12 @@ public:
 	void purge();
 	Army mutate();
 	Army& operator*(const Army& army);
-	void save();
+	void save(int size, int level);
 	~Army();
 private:
 	std::vector<Unit*> unitList_;
 	int currentID;
 	std::string armyCode_;
 	int rangeSpwan = 20;
-	int level_get();
 };
 
