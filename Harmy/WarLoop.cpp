@@ -65,8 +65,8 @@ void WarLoop::clashOfArmy()
 	}
 
 	//this->slotList_[0].army_get().unitList_getAt(0).mutate();
-
-	this->slotList_[0].army_get().unitList_getAt(0) * this->slotList_[0].army_get().unitList_getAt(1);
+	//this->slotList_[0].army_get().mutate(); //bug
+	//this->slotList_[0].army_get() * this->slotList_[0].army_get();
 }
 
 WarLoop::~WarLoop()

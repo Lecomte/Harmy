@@ -88,7 +88,7 @@ Unit& Army::unit_get(int uniqId)
 	return *u;
 }
 
-Unit& Army::unitList_getAt(int index)
+Unit& Army::unitList_getAt(int index) const
 {
 	//if (uniqId < this->size_get())
 	return *(this->unitList_[index]);
@@ -212,7 +212,40 @@ Army Army::mutate()
 
 Army& Army::operator*(const Army& army)
 {
-
+	Army newArmy = Army();
+	int minSize = this->size_get() < army.size_get() ? this->size_get() : army.size_get();
+	int numberUnitMutation = std::rand() % minSize;
+	for (int i = 0; i < numberUnitMutation; i++)
+	{
+		newArmy.unitList_.push_back(&(this->unitList_getAt(i) * army.unitList_getAt(i)));
+	}
+	int takemyArmybefore = std::rand() % 2;
+	if (takemyArmybefore == 1)
+	{
+		int restUnit = minSize - numberUnitMutation;
+		int random = std::rand() % restUnit;
+		for (int i = 0; i < random; i++)
+		{
+			newArmy.unitList_.push_back(this->unitList_[numberUnitMutation + i]);
+		}
+		for (int i = numberUnitMutation + random; i < army.size_get(); i++)
+		{
+			newArmy.unitList_.push_back(army.unitList_[i]);
+		}
+	}
+	else{
+		int restUnit = minSize - numberUnitMutation;
+		int random = std::rand() % restUnit;
+		for (int i = 0; i < random; i++)
+		{
+			newArmy.unitList_.push_back(army.unitList_[numberUnitMutation + i]);
+		}
+		for (int i = numberUnitMutation + random; i < this->size_get(); i++)
+		{
+			newArmy.unitList_.push_back(this->unitList_[i]);
+		}
+	}
+	return newArmy;
 }
 
 Army::~Army()

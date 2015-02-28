@@ -11,8 +11,8 @@ public:
 	Army(Army& army);
 	Army& operator=(const Army& army);
 	Unit& unit_get(int uniqId);
-	Unit& unitList_getAt(int index);
-	int size_get() { return this->unitList_.size(); }
+	Unit& unitList_getAt(int index) const;
+	int size_get() const { return this->unitList_.size(); }
 	void baseSpawn_set(Point value);
 	std::string armyCode_get() { return this->armyCode_; }
 	Unit& getNearestUnit(Point& pos);
