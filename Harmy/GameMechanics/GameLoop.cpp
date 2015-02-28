@@ -74,10 +74,16 @@ bool GameLoop::runRound()
 
 void GameLoop::endGame()
 {
-	if(this->armyA_.size_get() > 0)
+	if (this->armyA_.size_get() > 0)
+	{
 		std::cout << "Winner " << armyA_.armyCode_get() << " nombre de points " << armyA_.size_get() << std::endl;
+		this->armyA_.save();
+	}
 	else
+	{
 		std::cout << "Winner " << armyB_.armyCode_get() << " nombre de points " << armyB_.size_get() << std::endl;
+		this->armyB_.save();
+	}
 }
 
 GameLoop::~GameLoop()

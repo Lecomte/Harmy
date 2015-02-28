@@ -11,6 +11,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <fstream>
 
 class Unit
 {
@@ -46,6 +47,7 @@ public:
 	Unit mutate() const;
 	Unit& operator*(const Unit& unit) const;
 	void instanciateCapacities();
+	void save(std::ofstream& fichier);
 	//Debug
 	void print();
 	~Unit();

@@ -217,6 +217,20 @@ Unit& Unit::operator*(const Unit& unit) const
 	return predatorUnit;
 }
 
+
+void Unit::save(std::ofstream& fichier)
+{
+	fichier << this->speed_get().level_get() << " "
+		<< this->health_get().level_get() << " "
+		<< this->armor_get().level_get() << " "
+		<< this->regeneration_get().level_get() << " "
+		<< this->damage_get().level_get() << " "
+		<< this->range_get().level_get() << " "
+		<< this->firerate_get().level_get() << " "
+		<< this->AICode_ << " "
+		<< std::endl;
+}
+
 //debug
 void Unit::print()
 {

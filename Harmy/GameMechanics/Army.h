@@ -1,6 +1,7 @@
 #pragma once
 #include "Unit.h"
 #include <vector>
+#include <fstream>
 
 class Army
 {
@@ -22,11 +23,13 @@ public:
 	void purge();
 	Army mutate();
 	Army& operator*(const Army& army);
+	void save();
 	~Army();
 private:
 	std::vector<Unit*> unitList_;
 	int currentID;
 	std::string armyCode_;
 	int rangeSpwan = 20;
+	int level_get();
 };
 
