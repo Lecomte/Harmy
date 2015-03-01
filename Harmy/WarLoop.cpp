@@ -63,11 +63,12 @@ void WarLoop::clashOfArmy()
 	{
 		std::cout << this->slotList_[l].army_get().armyCode_get() << " a " << this->slotList_[l].score_get() << " points." << std::endl;
 	}
-	this->slotList_[0].army_get().save(this->unitNumber_, this->levelGlobal_);
 
-	//this->slotList_[0].army_get().unitList_getAt(0).mutate();
-	//this->slotList_[0].army_get().mutate(); //bug
-	//this->slotList_[0].army_get() * this->slotList_[0].army_get();
+	//this->slotList_[0].army_get().save(this->unitNumber_, this->levelGlobal_);
+
+	//Unit u = this->slotList_[0].army_get().unitList_getAt(0).mutate();
+	//this->slotList_[0].army_get().mutate();
+	Army a = this->slotList_[0].army_get() * this->slotList_[0].army_get();
 }
 
 WarLoop::~WarLoop()

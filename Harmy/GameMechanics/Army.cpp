@@ -195,7 +195,7 @@ Army Army::mutate()
 		while (startEnsemble == endEnsemble)
 		{
 			startEnsemble = std::rand() % armyLength;
-			endEnsemble = std::rand() % armyLength;
+			endEnsemble = std::rand() % armyLength+1;
 		}
 		if (endEnsemble < startEnsemble){
 			int tmp = startEnsemble;
@@ -204,7 +204,7 @@ Army Army::mutate()
 		}
 		for (int i = startEnsemble; i < endEnsemble; i++)
 		{
-			cpyArmy.unitList_[i] = &(cpyArmy.unitList_[i]->mutate());
+			cpyArmy.unitList_[i] = new Unit(cpyArmy.unitList_[i]->mutate());
 		}
 	}
 	return cpyArmy;
@@ -217,7 +217,7 @@ Army& Army::operator*(const Army& army)
 	int numberUnitMutation = std::rand() % minSize;
 	for (int i = 0; i < numberUnitMutation; i++)
 	{
-		newArmy.unitList_.push_back(&(this->unitList_getAt(i) * army.unitList_getAt(i)));
+		newArmy.unitList_.push_back(new Unit(this->unitList_getAt(i) * army.unitList_getAt(i)));
 	}
 	int takemyArmybefore = std::rand() % 2;
 	if (takemyArmybefore == 1)
